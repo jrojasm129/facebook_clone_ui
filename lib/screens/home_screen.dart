@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SliverToBoxAdapter(
-              child: PostContainer(currentUser: currentUser),
+              child: CreatePostContainer(currentUser: currentUser),
             ),
 
             const SliverPadding(
@@ -50,7 +50,30 @@ class HomeScreen extends StatelessWidget {
                   onlineUsers: onlineUsers,
                 ),
               ),
-            )
+            ),
+
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              sliver: SliverToBoxAdapter(
+                child: Stories(
+                  currentUser: currentUser,
+                  stories: stories
+                ),
+              ),
+            ),
+
+            SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                final post = posts[index];
+
+                return PostContainer(post: post);
+
+              },
+              childCount: posts.length
+              )
+            ),
+
+            
         ],
       ),
       

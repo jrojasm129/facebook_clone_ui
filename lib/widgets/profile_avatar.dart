@@ -8,11 +8,13 @@ class ProfileAvatar extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
   final bool showConectionState;
+  final bool hasBorder;
 
   const ProfileAvatar({ Key? key, 
     required this.imageUrl, 
     this.isActive = false,
-    this.showConectionState = true
+    this.showConectionState = true, 
+    this.hasBorder = false
   }) : super(key: key);
 
   @override
@@ -20,9 +22,12 @@ class ProfileAvatar extends StatelessWidget {
     return Stack(
       children: [
         CircleAvatar(
-          backgroundColor: Colors.grey[200],
           radius: 20,
-          backgroundImage: CachedNetworkImageProvider(imageUrl),
+          child: CircleAvatar(
+            backgroundColor: Colors.grey[200],
+            radius: hasBorder ? 17 : 20,
+            backgroundImage: CachedNetworkImageProvider(imageUrl),
+          ),
         ),
         if(showConectionState)
         Positioned(
