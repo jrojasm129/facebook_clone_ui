@@ -17,6 +17,7 @@ class PostContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       color: Colors.white,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),

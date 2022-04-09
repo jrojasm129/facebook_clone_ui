@@ -8,37 +8,41 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../widgets/widgets.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMixin {
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+    
     return Scaffold(  
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-            SliverAppBar(
-              systemOverlayStyle: SystemUiOverlayStyle.light,
-              backgroundColor: Colors.white,
-              floating: true,
-              centerTitle: false,
-              title: const Text('facebook', style: TextStyle(
-                color: Palette.facebookBlue,
-                fontSize: 28, 
-                fontWeight: FontWeight.bold,
-                letterSpacing: -1.2
-              )),
-              actions: [
-                CircleButtom(
-                  icon: Icons.search,
-                  onPressed: (){},
-                ),
-                CircleButtom(
-                  icon: MdiIcons.facebookMessenger,
-                  onPressed: (){},
-                )
-              ],
-            ),
+            
+             SliverAppBar(
+                systemOverlayStyle: SystemUiOverlayStyle.light,
+                backgroundColor: Colors.white,
+                floating: true,
+                centerTitle: false,
+                title: const FacebookLogo(),
+                actions: [
+                  CircleButtom(
+                    icon: Icons.search,
+                    onPressed: () {},
+                  ),
+                  CircleButtom(
+                    icon: MdiIcons.facebookMessenger,
+                    onPressed: () {},
+                  )
+                ]),
+
             const SliverToBoxAdapter(
               child: CreatePostContainer(currentUser: currentUser),
             ),
@@ -79,6 +83,9 @@ class HomeScreen extends StatelessWidget {
       
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 

@@ -51,16 +51,22 @@ class _CreateRoomButtom extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: OutlinedButton(
         child: Row(
-          children: [
-            ShaderMask(
-              shaderCallback: Palette.createRoomGradient.createShader,
-              child: const Icon(
+          children: const [
+            // ShaderMask(
+            //   shaderCallback: Palette.createRoomGradient.createShader,
+            //   child: const Icon(
+            //     Icons.video_call,
+            //     color: Colors.white,
+            //     size: 35,
+            //   ),
+            // ),
+            Icon(
                 Icons.video_call,
-                color: Colors.white,
+                color: Colors.deepPurple,
                 size: 35,
-              ),
             ),
-            const Text('Create\nRoom', style: TextStyle(color: Palette.facebookBlue),)
+            SizedBox(width: 4),
+            Text('Create\nRoom', style: TextStyle(color: Palette.facebookBlue),)
           ],
         ),
         style: OutlinedButton.styleFrom(        
@@ -70,7 +76,7 @@ class _CreateRoomButtom extends StatelessWidget {
           ),
           side: const BorderSide(
             color: Colors.blueAccent,
-            width: 3
+            width: 2
           )
         ),
         onPressed: (){}, 
