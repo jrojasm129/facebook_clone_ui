@@ -15,7 +15,6 @@ class CreatePostContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 6, 12, 0),
-      color: Colors.white,
       child: Column(children: [
         Row(
           children: [
@@ -64,6 +63,11 @@ class CreatePostContainer extends StatelessWidget {
           ],),
         )
       ]),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius:
+            Responsive.isDesktop(context) ? BorderRadius.circular(10) : null,
+      ),
     );
   }
 }

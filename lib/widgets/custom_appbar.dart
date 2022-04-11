@@ -51,7 +51,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _UserCard(currentUser: currentUser),
+                Flexible(
+                  child: UserCard(user: currentUser)
+                ),
                 const SizedBox(width: 12),
                 CircleButtom(
                     icon: Icons.search,
@@ -72,35 +74,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
  
 }
 
-class _UserCard extends StatelessWidget {
-  const _UserCard({
-    Key? key,
-    required this.currentUser,
-  }) : super(key: key);
-
-  final User currentUser;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: (){},
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Row(
-            mainAxisSize:MainAxisSize.min,
-            children: [
-              ProfileAvatar(
-                showConectionState: false,
-                imageUrl: currentUser.imageUrl
-              ),
-              const SizedBox(width: 4),
-              Text(currentUser.name, style: TextStyle(fontWeight: FontWeight.w600, color: Colors.grey[600]),)
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

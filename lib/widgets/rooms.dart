@@ -15,8 +15,7 @@ class Rooms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(      
-      height: 60, 
-      color: Colors.white,
+      height: 60,       
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
         scrollDirection: Axis.horizontal,
@@ -35,6 +34,11 @@ class Rooms extends StatelessWidget {
             child: ProfileAvatar(imageUrl: user.imageUrl),
           );
         },
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius:
+            Responsive.isDesktop(context) ? BorderRadius.circular(10) : null,
       ),
     );
   }

@@ -15,7 +15,6 @@ class PostContainer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       padding: const EdgeInsets.symmetric(vertical: 8),
-      color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -48,6 +47,11 @@ class PostContainer extends StatelessWidget {
           )
 
         ],
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius:
+            Responsive.isDesktop(context) ? BorderRadius.circular(10) : null,
       ),
     );
   }

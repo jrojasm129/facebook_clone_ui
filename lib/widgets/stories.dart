@@ -16,9 +16,13 @@ class Stories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final bool isDesktop = Responsive.isDesktop(context);
+
     return Container(
       height: 200,
-      color: Colors.white,
+      color: isDesktop ? Colors.transparent : Colors.white,
+      
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
         scrollDirection: Axis.horizontal,
@@ -39,7 +43,7 @@ class Stories extends StatelessWidget {
             story: story
           );
         },
-      ),
+      )
     );
   }
 }
@@ -58,10 +62,14 @@ class _StoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final bool isDesktop = Responsive.isDesktop(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Stack(
         children: [
+          
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
@@ -71,14 +79,24 @@ class _StoryCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
+
           Container(
             height: double.infinity,
             width: 100,
-            decoration: const BoxDecoration(
-              gradient: Palette.storyGradient  
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                gradient: Palette.storyGradient,
+                boxShadow: isDesktop
+                    ? const [
+                        BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 2),
+                            blurRadius: 4)
+                      ]
+                    : null  
             ),
           ),
-
+      
           Positioned(
             left: 8,
             top: 8,
@@ -97,7 +115,7 @@ class _StoryCard extends StatelessWidget {
             )
             : ProfileAvatar(imageUrl: story!.user.imageUrl, hasBorder: !story!.isViewed)
           ),
-
+      
           Positioned(
             bottom: 8,
             right: 8,
