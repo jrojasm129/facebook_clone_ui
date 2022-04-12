@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../config/palette.dart';
 import '../models/models.dart';
 
 const User currentUser = User(
@@ -225,3 +229,12 @@ final List<Post> posts = [
     comments: 301,
   )
 ];
+
+    final List<List> moreOptions = [
+      [MdiIcons.shieldAccount, Colors.deepPurple,'COVID-19 Info Center'],
+      [MdiIcons.accountMinus, Colors.cyan,'Friends'],
+      [MdiIcons.facebookMessenger, Palette.facebookBlue,'Messeger'],
+      [MdiIcons.flag, Colors.orange,'Pages'],
+      [Icons.ondemand_video, Palette.facebookBlue,'Watch'],
+      [MdiIcons.calendarStar, Colors.red,'Events'],
+    ];
